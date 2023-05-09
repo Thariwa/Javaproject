@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/output.css">
+</head>
+<body class="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+
+        <main class="flex flex-col justify-center items-center mt-36">
+            <h1 class="uppercase font-serif text-5xl">COUNTDOWN TO MOJOLA'S 2024 BIRTHDAY</h1>
+
+    
+            <div class="flex justify-around gap-24 mt-24 border-4 rounded-md px-7 py-9"> 
+                <div class="flex flex-col ">
+                    <span id="day" class="text-4xl text-white">309</span>
+                    <span class="text-2xl font-semibold">days</span>
+                </div>
+                <div class="flex flex-col ">
+                    <span id="hr" class="text-4xl text-white">30</span>
+                    <span class="text-2xl font-semibold">hours</span>
+                </div>
+                <div class="flex flex-col ">
+                    <span id="min" class="text-4xl text-white">30</span>
+                    <span class="text-2xl font-semibold">minutes</span>
+                </div>
+                <div class="flex flex-col ">
+                    <span id="sec" class="text-4xl text-white">30</span>
+                    <span class="text-2xl font-semibold">second</span>
+                </div>
+    
+                </div>
+    
+        </main>
+        <script>
+            const days = document.getElementById('day')
+            const hour = document.getElementById('hr')
+            const minutes = document.getElementById('min')
+            const second = document.getElementById('sec')
+            const bday = new Date('Apr 16 2024 00:00:00').getTime()
+    
+            function nextBD(){
+                const now = new Date().getTime()
+                const diff = bday - now
+    
+                const xs = 1000
+                const xm = xs * 60
+                const xh = xm * 60
+                const xd = xh * 24
+    
+                const d = Math.floor(diff/xd)
+                const h = Math.floor((diff % xd) / xh)
+                const m = Math.floor((diff % xh) / xm)
+                const s = Math.floor((diff % xm) / xs)
+    
+    
+    
+                days.textContent = d
+                hour.textContent = h
+                minutes.textContent = m
+                second.textContent = s
+    
+                setTimeout(() => nextBD(), 100)
+                
+            }
+            
+    
+            nextBD()
+        </script>
+</body>
+</html>
